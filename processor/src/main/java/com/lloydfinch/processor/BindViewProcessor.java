@@ -1,5 +1,6 @@
 package com.lloydfinch.processor;
 
+import com.google.auto.service.AutoService;
 import com.lloydfinch.annotation.BindView;
 
 import java.util.HashSet;
@@ -8,6 +9,7 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
@@ -23,6 +25,7 @@ import javax.tools.Diagnostic;
  * Date: 2019-11-21 20:43
  * Modify: lloydfinch 2019-11-21 20:43
  */
+@AutoService(Processor.class)
 public class BindViewProcessor extends AbstractProcessor {
 
     private String TAG = "BindViewProcessor";
@@ -35,6 +38,7 @@ public class BindViewProcessor extends AbstractProcessor {
         super.init(processingEnvironment);
         this.mMessager = processingEnvironment.getMessager();
         this.mElements = processingEnvironment.getElementUtils();
+        mMessager.printMessage(Diagnostic.Kind.NOTE, TAG + " init ");
     }
 
 
@@ -52,6 +56,8 @@ public class BindViewProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
+        mMessager.printMessage(Diagnostic.Kind.NOTE, "processing...");
+        mMessager.printMessage(Diagnostic.Kind.NOTE, TAG + " process " + set.size());
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindView.class);
         for (Element element : elements) {
             VariableElement variableElement = (VariableElement) element;
