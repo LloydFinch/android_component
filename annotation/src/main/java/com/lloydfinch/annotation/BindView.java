@@ -21,5 +21,7 @@ public @interface BindView {
      *
      * @return View的id
      */
-    int id();
+    int id() default 0;
+
+    String value() default "";
 }
