@@ -1,1 +1,7 @@
-include ':app', ':annotation', ':processor', ':apt'
+include ':protocol'
+include ':annotation'
+include ':processor'
+include ':apt'
+include ':arouter'
+include ':app'
+include ':share'
