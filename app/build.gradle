@@ -10,6 +10,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -34,4 +40,13 @@ dependencies {
     implementation project(":annotation")
     implementation project(":apt")
     annotationProcessor project(":processor")
+
+    implementation project(":protocol")
+    implementation project(":arouter")
+
+    /**
+     * 这个一定要加在每个Module中
+     */
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    implementation project(":share")
 }

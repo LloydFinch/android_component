@@ -3,5 +3,6 @@ include ':annotation'
 include ':processor'
 include ':apt'
 include ':arouter'
-include ':app'
 include ':share'
+include ':app'
+

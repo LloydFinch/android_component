@@ -9,5 +9,6 @@ package com.lloydfinch.protocol;
  */
 public interface Protocol {
     String GROUP_SHARE = "share";
+    String GROUP_MAIN = "main";
 
 }

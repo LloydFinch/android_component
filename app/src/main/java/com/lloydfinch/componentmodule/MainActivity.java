@@ -1,13 +1,15 @@
 package com.lloydfinch.componentmodule;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.lloydfinch.annotation.BindView;
 import com.lloydfinch.apt.BindViewTools;
 
+@Route(path = "/main/MainActivity")
 public class MainActivity extends AppCompatActivity {
 
     @BindView(id = R.id.tv_hello, value = "hello android")
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.tv_hello);
 
         textView.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
+            // startActivity(new Intent(this, MainActivity.class));
+            ARouter.getInstance().build("/share/ShareToolActivity").navigation();
         });
     }
 }

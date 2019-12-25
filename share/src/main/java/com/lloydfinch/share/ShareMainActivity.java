@@ -18,8 +18,6 @@ public class ShareMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_main);
 
-        ARouter.getInstance().inject(this);
-
         tvShare = findViewById(R.id.tv_share);
         tvShare.setOnClickListener(v -> {
             ARouter.getInstance().build("/share/ShareToolActivity").navigation();
