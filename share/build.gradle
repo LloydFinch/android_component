@@ -14,6 +14,11 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -41,5 +46,10 @@ dependencies {
 
     implementation project(':protocol')
     implementation project(':arouter')
+
+    /**
+     * 这个一定要加在每个Module中
+     */
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
 }

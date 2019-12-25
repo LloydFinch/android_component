@@ -6,9 +6,8 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.lloydfinch.protocol.Protocol;
 
-@Route(path = "share/ShareMainActivity", group = Protocol.GROUP_SHARE, name = "ShareMainActivity")
+@Route(path = "/share/ShareMainActivity")
 public class ShareMainActivity extends AppCompatActivity {
 
 
@@ -19,9 +18,11 @@ public class ShareMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_main);
 
+        ARouter.getInstance().inject(this);
+
         tvShare = findViewById(R.id.tv_share);
         tvShare.setOnClickListener(v -> {
-            ARouter.getInstance().build("share/ShareToolActivity").navigation();
+            ARouter.getInstance().build("/share/ShareToolActivity").navigation();
         });
     }
 }

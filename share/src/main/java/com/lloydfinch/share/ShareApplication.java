@@ -17,6 +17,16 @@ public class ShareApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        ARouter.init(this);
+        if (isDebug()) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+
+        ARouter.init(ShareApplication.this);
+    }
+
+
+    private boolean isDebug() {
+        return true;
     }
 }
