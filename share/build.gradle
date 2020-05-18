@@ -25,6 +25,9 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        /**
+         * 一定记得在android.defaultConfig{}闭包里面
+         */
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
